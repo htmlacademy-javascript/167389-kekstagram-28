@@ -21,8 +21,8 @@ const getRandomNumber = (min, max) => {
 const createComment = () => ({
   id: getRandomNumber(),
   avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-  message: MESSAGE[getRandomNumber(1,6)],
-  name: NAMES[getRandomNumber(1,10)]
+  message: MESSAGE[getRandomNumber(0,5)],
+  name: NAMES[getRandomNumber(0,9)]
 });
 
 const photoInfo = (index) => ({
