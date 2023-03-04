@@ -15,7 +15,7 @@ const isPalindrom = (string) => {
     .join('');
 
   return tempString === reverseString;
-} 
+};
 
 isPalindrom('кекс');
 
@@ -31,10 +31,10 @@ const findNumberInText = (string) => {
     if (!isNaN(tempArr[i])) {
       numbersArr.push(tempArr[i]);
     }
-  };
+  }
 
-  return numbersArr.join(''); 
-}
+  return numbersArr.join('');
+};
 
 findNumberInText('1 кефир, 0.5 батона');
 findNumberInText('-1.5');
@@ -50,6 +50,6 @@ const myPadStart = (string, minLength, pad) => {
   }
 
   return pad.slice(0, actualPad % pad.length) + pad.repeat(actualPad / pad.length) + string;
-}
+};
 
 myPadStart('1', 4, '0');
