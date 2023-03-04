@@ -1,16 +1,19 @@
 // Функция для проверки длины строки
 const isLessOrEqual = (string, length) => string.length <= length;
 
+isLessOrEqual('проверяемая строка', 20);
+
 //Функция для проверки, является ли строка палиндромом
 const isPalindrom = (string) => {
   const tempString = string
     .toLowerCase()
     .replaceAll(' ','');
 
-  let reverseString = tempString
+  const reverseString = tempString
     .split('')
     .reverse()
     .join('');
+
   return tempString === reverseString;
 } 
 
@@ -19,16 +22,17 @@ isPalindrom('кекс');
 //Функция, которая принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа.
 
 const findNumberInText = (string) => {
-  let tempArr = string
+  const tempArr = string
     .replaceAll(' ','')
     .split('');
-  console.log(tempArr);
-  let numbersArr = [];
-  for (let i=0; i < tempArr.length; i++) {
+  const numbersArr = [];
+
+  for (let i = 0; i < tempArr.length; i++) {
     if (!isNaN(tempArr[i])) {
       numbersArr.push(tempArr[i]);
     }
   };
+
   return numbersArr.join(''); 
 }
 
