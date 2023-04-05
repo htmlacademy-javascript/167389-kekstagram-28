@@ -8,4 +8,8 @@ const getRandomNumber = (min, max) => {
   return Math.floor(result);
 };
 
-export {getRandomNumber};
+const isEscapeKey = (evt) => {
+  return evt.key === 'Escape';
+};
+
+export {getRandomNumber, isEscapeKey};
