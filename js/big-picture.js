@@ -1,4 +1,4 @@
-import { createComments, allPhotoInfo } from './data.js';
+import { allPhotoInfo } from './data.js';
 import { picture, pictures, pictureAllPhotoInfo } from './miniphoto.js';
 
 import { isEscapeKey } from './util.js';
