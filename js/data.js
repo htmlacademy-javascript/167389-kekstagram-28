@@ -25,9 +25,9 @@ const photoInfo = (index) => ({
   url: `photos/${index}.jpg`,
   likes: getRandomNumber(15, 200),
   commentsText: createComments(),
-  comments: createComments().length
+  comments: createComments()
 });
 
 const allPhotoInfo = () => Array.from({length: 25}, (_, index) => photoInfo(index + 1));
 
-export {createComments, allPhotoInfo};
+export {createComment, allPhotoInfo};
