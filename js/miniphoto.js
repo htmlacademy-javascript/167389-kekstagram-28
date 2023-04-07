@@ -6,6 +6,7 @@ const picture = document.querySelector('#picture').content.querySelector('.pictu
 
 const pictureAllPhotoInfo = allPhotoInfo();
 
+
 pictureAllPhotoInfo.forEach(({url, likes, comments, id}) => {
   const pictureSample = picture.cloneNode(true);
   pictureSample.querySelector('.picture__img').src = url;
@@ -15,12 +16,10 @@ pictureAllPhotoInfo.forEach(({url, likes, comments, id}) => {
   pictures.appendChild(pictureSample);
 });
 
-const allPhotoInfoPictures = () => Array.from(pictureAllPhotoInfo);
-allPhotoInfoPictures();
 
 /*Во втором варианте убираю
 const allPhotoInfoPictures = () => Array.from(pictureAllPhotoInfo);
 allPhotoInfoPictures();
 
 и вместо моего кода в bigPicture c forEach ставлю закомментированный код*/
-export {pictures, picture, pictureAllPhotoInfo, allPhotoInfoPictures};
+export {pictures, picture, pictureAllPhotoInfo};
