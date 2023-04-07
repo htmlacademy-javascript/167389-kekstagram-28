@@ -8,9 +8,7 @@ const getRandomNumber = (min, max) => {
   return Math.floor(result);
 };
 
-const isEscapeKey = (evt) => {
-  return evt.key === 'Escape';
-};
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 // function createElementFromHTML(htmlString) {
 //   const div = document.createElement('div');

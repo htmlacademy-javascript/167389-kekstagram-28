@@ -54,8 +54,8 @@ const findBigPicture = () => {
 
     const createPictureComments = () => {
       socialComments.innerHTML = '';
-      let commentsOnPageNow = 0;
-      commentsOnPageNow += NUMBER_COMMENTS;
+      let commentsOnPageNow = 5;
+      //commentsOnPageNow += NUMBER_COMMENTS;
       commentsLoader.addEventListener('click', () => {
         commentsOnPageNow += NUMBER_COMMENTS;
       });
@@ -65,7 +65,7 @@ const findBigPicture = () => {
       const currentComments = pictureId.comments.slice(commentsOnPageNow, NUMBER_COMMENTS);
       currentComments.forEach((item) => socialComments.appendChild(createPictureComment(item)));
       socialCommentsCount.innerHTML = `${commentsOnPageNow} из <span class="comments-count"> ${commentsCount.textContent}</span> комментариев`;
-      createPictureComment();
+      createPictureComment(currentComments);
       commentsLoader.classList.remove('hidden');
       if (commentsOnPageNow >= pictureId.comments.length) {
         commentsLoader.classList.add('hidden');
