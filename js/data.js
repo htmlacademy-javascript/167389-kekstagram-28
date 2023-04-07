@@ -17,6 +17,8 @@ const createComment = () => ({
   name: NAMES[getRandomNumber(0,9)]
 });
 
+createComment();
+
 const createComments = () => Array.from({length: getRandomNumber(1, 20)}, () => createComment());
 
 const photoInfo = (index) => ({
@@ -24,9 +26,9 @@ const photoInfo = (index) => ({
   description: DESCRIPTIONS[index - 1],
   url: `photos/${index}.jpg`,
   likes: getRandomNumber(15, 200),
-  comments: createComments().length
+  comments: createComments()
 });
 
 const allPhotoInfo = () => Array.from({length: 25}, (_, index) => photoInfo(index + 1));
 
-export {allPhotoInfo};
+export {photoInfo, allPhotoInfo};

@@ -8,4 +8,13 @@ const getRandomNumber = (min, max) => {
   return Math.floor(result);
 };
 
-export {getRandomNumber};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+// function createElementFromHTML(htmlString) {
+//   const div = document.createElement('div');
+//   div.innerHTML = htmlString.trim();
+
+//   return div.firstChild;
+// }
+
+export {getRandomNumber, isEscapeKey};
