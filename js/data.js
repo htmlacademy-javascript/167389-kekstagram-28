@@ -31,4 +31,4 @@ const photoInfo = (index) => ({
 
 const allPhotoInfo = () => Array.from({length: 25}, (_, index) => photoInfo(index + 1));
 
-export {createComment, photoInfo, allPhotoInfo};
+export {photoInfo, allPhotoInfo};
