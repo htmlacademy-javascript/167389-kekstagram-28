@@ -7,8 +7,8 @@ const imgUploadFile = imgUpload.querySelector('#upload-file');
 //const imgUploadButton = imgUpload.querySelector('.img-upload__control');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploadCloseButton = document.querySelector('#upload-cancel');
-const imgHashtagsInput = imgUploadForm.querySelector('.text__hashtags');
-const imgDescriptionInput = imgUploadForm.querySelector('.text__description');
+//const imgHashtagsInput = imgUploadForm.querySelector('.text__hashtags');
+//const imgDescriptionInput = imgUploadForm.querySelector('.text__description');
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
