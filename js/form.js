@@ -7,8 +7,8 @@ const imgUploadFile = imgUpload.querySelector('#upload-file');
 //const imgUploadButton = imgUpload.querySelector('.img-upload__control');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploadCloseButton = document.querySelector('#upload-cancel');
-//const imgHashtagsInput = imgUploadForm.querySelector('.text__hashtags');
-//const imgDescriptionInput = imgUploadForm.querySelector('.text__description');
+const imgHashtagsInput = imgUploadForm.querySelector('.text__hashtags');
+const imgCommentInput = imgUploadForm.querySelector('.text__description');
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -27,6 +27,18 @@ imgUploadFile.addEventListener('change', () => {
   openUserModal();
 });
 
+imgHashtagsInput.addEventListener('keydown', (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.stopPropagation();
+  }
+});
+
+imgCommentInput.addEventListener('keydown', (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.stopPropagation();
+  }
+});
+
 function closeBigPicture () {
   imgUploadOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
@@ -42,4 +54,3 @@ imgUploadCloseButton.addEventListener('click', () => {
 });
 
 export {openUserModal};
-
