@@ -19,7 +19,6 @@ const findBigPicture = () => {
     const pictureId = pictureAllPhotoInfo.find(
       (item) => item.id === Number(pictureTarget.dataset.pictureId)
     );
-    //console.log(pictureId);
     bigPicture.querySelector('.big-picture__img img').src = pictureId.url;
     bigPicture.querySelector('.social__caption').textContent = pictureId.description;
     bigPicture.querySelector('.likes-count').textContent = pictureId.likes;
@@ -54,16 +53,19 @@ const findBigPicture = () => {
 
     const createPictureComments = () => {
       socialComments.innerHTML = '';
-      let commentsOnPageNow = 5;
-      //commentsOnPageNow += NUMBER_COMMENTS;
+      let commentsOnPageNow = 0;
+      commentsOnPageNow += NUMBER_COMMENTS;
       commentsLoader.addEventListener('click', () => {
         commentsOnPageNow += NUMBER_COMMENTS;
+        if (commentsOnPageNow >= pictureId.comments.length) {
+          commentsLoader.classList.add('hidden');
+        }
       });
 
       commentsCount.textContent = pictureId.comments.length;
-      commentsOnPageNow = Math.min(commentsOnPageNow, pictureId.comments.length);
+      //commentsOnPageNow = Math.min(commentsOnPageNow, pictureId.comments.length);
       const currentComments = pictureId.comments.slice(commentsOnPageNow, NUMBER_COMMENTS);
-      currentComments.forEach((item) => socialComments.appendChild(createPictureComment(item)));
+      currentComments.forEach((comment) => socialComments.appendChild(createPictureComment(comment)));
       socialCommentsCount.innerHTML = `${commentsOnPageNow} из <span class="comments-count"> ${commentsCount.textContent}</span> комментариев`;
       createPictureComment(currentComments);
       commentsLoader.classList.remove('hidden');
