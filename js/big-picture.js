@@ -116,4 +116,4 @@ bigPictureCloseButton.addEventListener('click', () => {
   document.removeEventListener('keydown', showBigPicture);
 });
 
-export {findBigPicture};
+export {findBigPicture, onDocumentKeydown};
