@@ -83,7 +83,7 @@ const updateSlider = () => {
     start: effectNow.max,
     step: effectNow.step,
   });
-  isDefault;
+  isDefault();
 };
 
 const effectList = document.querySelector('.effects__list');
