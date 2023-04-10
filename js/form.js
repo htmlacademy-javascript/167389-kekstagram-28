@@ -1,5 +1,6 @@
 import { isEscapeKey } from './util.js';
 import { pristine } from './validation.js';
+import { resetEffects } from './effects.js';
 const body = document.querySelector('body');
 const imgUpload = document.querySelector('.img-upload');
 const imgUploadForm = document.querySelector('.img-upload__form');
@@ -45,6 +46,7 @@ function closeBigPicture () {
   document.removeEventListener('keydown', onDocumentKeydown);
   imgUploadForm.reset();
   pristine.reset();
+  resetEffects();
 }
 
 
