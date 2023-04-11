@@ -4,7 +4,6 @@ import './form.js';
 import './validation.js';
 import './zoom.js';
 import './effects.js';
-//import { pictureAllPhotoInfo} from './miniphoto.js';
 
 // fetch('https://28.javascript.pages.academy/kekstagram/data')
 //   .then((response) => response.json())
@@ -12,12 +11,6 @@ import './effects.js';
 //     renderSimilarList(similarWizards);
 //     console.log(similarWizards);
 //   });
-
-const response = await fetch('https://28.javascript.pages.academy/kekstagram/data');
-const results = await response.json();
-console.log(results[1]);
-
-export { results };
 
 findBigPicture();
 onDocumentKeydown();
