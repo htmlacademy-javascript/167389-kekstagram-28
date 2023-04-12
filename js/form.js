@@ -10,11 +10,6 @@ const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploadCloseButton = document.querySelector('#upload-cancel');
 const imgHashtagsInput = imgUploadForm.querySelector('.text__hashtags');
 const imgCommentInput = imgUploadForm.querySelector('.text__description');
-const imgSubmitButton = document.querySelector('#upload__submit');
-
-const SubmitButtonText = {
-  SENDING: 'Загружаем...'
-};
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {

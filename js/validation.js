@@ -37,7 +37,6 @@ pristine.addValidator(validComment, validateComment, 'Длина коммент�
 
 const pictureFormSubmit = (onSuccess) => {
   imgUploadForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
     const isValid = pristine.validate();
     if(isValid) {
       evt.preventDefault();
@@ -54,7 +53,6 @@ const pictureFormSubmit = (onSuccess) => {
             onSuccess();
             isSuccessMessage();
           } else {
-            onSuccess();
             isErrorMessage();
           }
         })
@@ -62,9 +60,7 @@ const pictureFormSubmit = (onSuccess) => {
           isErrorMessage();
         });
     }
-    else if (!isValid) {
-      return;
-    }
+    return evt.preventDefault;
   });
 };
 
