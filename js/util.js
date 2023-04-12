@@ -64,5 +64,4 @@ const isErrorMessage = () => {
   });
 };
 
-
 export {isEscapeKey, isSuccessMessage, isErrorMessage};
