@@ -1,7 +1,7 @@
-import {pictureAllPhotoInfo} from './miniphoto.js';
-import { findBigPicture, onDocumentKeydown } from './big-picture.js';
-import './form.js';
-import './validation.js';
+//import {pictureAllPhotoInfo} from './miniphoto.js';
+import { findBigPicture /*onDocumentKeydown*/ } from './big-picture.js';
+import {closeBigPicture} from './form.js';
+import {pictureFormSubmit} from './validation.js';
 import './zoom.js';
 import './effects.js';
 
@@ -13,5 +13,4 @@ import './effects.js';
 //   });
 
 findBigPicture();
-onDocumentKeydown();
-pictureAllPhotoInfo();
+pictureFormSubmit(closeBigPicture);

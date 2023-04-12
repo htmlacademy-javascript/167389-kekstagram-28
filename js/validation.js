@@ -1,3 +1,4 @@
+import {isErrorMessage, isSuccessMessage} from './util.js';
 const VALID_HASHTAG = /#[a-zа-яё0-9]{1,19}$/i;
 const VALID_HASHTAG_COUNTS = 5;
 const VALID_COMMENT_LENGTH = 140;
@@ -33,11 +34,38 @@ function validateComment (comment) {
 
 pristine.addValidator(validComment, validateComment, 'Длина комментария не должна превышать 140 символов');
 
-imgUploadForm.addEventListener('submit', (evt) => {
-  const isValid = pristine.validate();
-  if(!isValid) {
-    evt.preventDefault();
-  }
-});
 
-export {pristine};
+const pictureFormSubmit = (onSuccess) => {
+  imgUploadForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+    if(isValid) {
+      evt.preventDefault();
+      const formData = new FormData(evt.target);
+      fetch(
+        'https://28.javascript.pages.academy/kekstagram',
+        {
+          method: 'POST',
+          body: formData,
+        },
+      )
+        .then((response) => {
+          if (response.ok) {
+            onSuccess();
+            isSuccessMessage();
+          } else {
+            onSuccess();
+            isErrorMessage();
+          }
+        })
+        .catch(() => {
+          isErrorMessage();
+        });
+    }
+    else if (!isValid) {
+      return;
+    }
+  });
+};
+
+export {pristine, pictureFormSubmit};
