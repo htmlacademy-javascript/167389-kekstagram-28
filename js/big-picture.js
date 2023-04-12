@@ -1,4 +1,3 @@
-import { allPhotoInfo } from './data.js';
 import { picture, pictures, pictureAllPhotoInfo} from './miniphoto.js';
 
 import { isEscapeKey } from './util.js';
@@ -79,7 +78,7 @@ const findBigPicture = () => {
   });
 };
 
-findBigPicture(allPhotoInfo);
+findBigPicture(pictureAllPhotoInfo);
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {

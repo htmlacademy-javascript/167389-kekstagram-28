@@ -1,11 +1,10 @@
-import {allPhotoInfo} from './data.js';
-
 const pictures = document.querySelector('.pictures');
 const picture = document.querySelector('#picture').content.querySelector('.picture');
 
+const response = await fetch('https://28.javascript.pages.academy/kekstagram/data');
+const results = await response.json();
 
-const pictureAllPhotoInfo = allPhotoInfo();
-
+const pictureAllPhotoInfo = structuredClone(results);
 
 pictureAllPhotoInfo.forEach(({url, likes, comments, id}) => {
   const pictureSample = picture.cloneNode(true);
@@ -16,10 +15,4 @@ pictureAllPhotoInfo.forEach(({url, likes, comments, id}) => {
   pictures.appendChild(pictureSample);
 });
 
-
-/*Во втором варианте убираю
-const allPhotoInfoPictures = () => Array.from(pictureAllPhotoInfo);
-allPhotoInfoPictures();
-
-и вместо моего кода в bigPicture c forEach ставлю закомментированный код*/
 export {pictures, picture, pictureAllPhotoInfo};

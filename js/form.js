@@ -55,4 +55,4 @@ imgUploadCloseButton.addEventListener('click', () => {
   document.removeEventListener('keydown', imgUploadFile);
 });
 
-export {openUserModal};
+export {openUserModal, closeBigPicture};
