@@ -5,7 +5,7 @@ import { isEscapeKey } from './util.js';
 const bigPicture = document.querySelector('.big-picture');
 const body = document.querySelector('body');
 const bigPictureCloseButton = bigPicture.querySelector('#picture-cancel');
-const NUMBER_COMMENTS = 5;
+const NUMBER_COMMENT = 5;
 
 
 const findBigPicture = () => {
@@ -23,7 +23,7 @@ const findBigPicture = () => {
     bigPicture.querySelector('.likes-count').textContent = pictureId.likes;
     bigPicture.querySelector('.comments-count').length = pictureId.comments.length;
 
-    const commentsLoader = bigPicture.querySelector('.comments-loader');
+    const commentLoader = bigPicture.querySelector('.comments-loader');
     const socialCommentsCount = bigPicture.querySelector('.social__comment-count');
     const commentsCount = bigPicture.querySelector('.comments-count');
     const socialComments = bigPicture.querySelector('.social__comments');
@@ -53,23 +53,23 @@ const findBigPicture = () => {
     const createPictureComments = () => {
       socialComments.innerHTML = '';
       let commentsOnPageNow = 0;
-      commentsOnPageNow += NUMBER_COMMENTS;
-      commentsLoader.addEventListener('click', () => {
-        commentsOnPageNow += NUMBER_COMMENTS;
+      commentsOnPageNow += NUMBER_COMMENT;
+      commentLoader.addEventListener('click', () => {
+        commentsOnPageNow += NUMBER_COMMENT;
         if (commentsOnPageNow >= pictureId.comments.length) {
-          commentsLoader.classList.add('hidden');
+          commentLoader.classList.add('hidden');
         }
       });
 
       commentsCount.textContent = pictureId.comments.length;
       //commentsOnPageNow = Math.min(commentsOnPageNow, pictureId.comments.length);
-      const currentComments = pictureId.comments.slice(commentsOnPageNow, NUMBER_COMMENTS);
+      const currentComments = pictureId.comments.slice(commentsOnPageNow, NUMBER_COMMENT);
       currentComments.forEach((comment) => socialComments.appendChild(createPictureComment(comment)));
       socialCommentsCount.innerHTML = `${commentsOnPageNow} из <span class="comments-count"> ${commentsCount.textContent}</span> комментариев`;
       createPictureComment(currentComments);
-      commentsLoader.classList.remove('hidden');
+      commentLoader.classList.remove('hidden');
       if (commentsOnPageNow >= pictureId.comments.length) {
-        commentsLoader.classList.add('hidden');
+        commentLoader.classList.add('hidden');
       }
     };
 

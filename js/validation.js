@@ -14,7 +14,7 @@ const pristine = new Pristine(imgUploadForm, {
 });
 
 function validateHashtag (hashtag) {
-  return VALID_HASHTAG.test(hashtag) || hashtag === '';
+  return VALID_HASHTAG.test(hashtag.trim()) || hashtag === '';
 }
 
 pristine.addValidator(validHashtag, validateHashtag, 'Ошибка в хештеге');

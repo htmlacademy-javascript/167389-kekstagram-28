@@ -67,11 +67,11 @@ noUiSlider.create(sliderElement, {
 });
 
 const isDefault = () => {
+  slider.classList.remove('hidden');
   if (effectNow === EFFECT_START) {
     slider.classList.add('hidden');
     imageElement.style.filter = 'none';
   }
-  slider.classList.remove('hidden');
 };
 
 const updateSlider = () => {

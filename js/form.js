@@ -2,10 +2,8 @@ import { isEscapeKey } from './util.js';
 import { pristine } from './validation.js';
 import { resetEffects } from './effects.js';
 const body = document.querySelector('body');
-const imgUpload = document.querySelector('.img-upload');
 const imgUploadForm = document.querySelector('.img-upload__form');
-const imgUploadFile = imgUpload.querySelector('#upload-file');
-//const imgUploadButton = imgUpload.querySelector('.img-upload__control');
+const imgUploadFile = document.querySelector('#upload-file');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploadCloseButton = document.querySelector('#upload-cancel');
 const imgHashtagsInput = imgUploadForm.querySelector('.text__hashtags');
@@ -55,4 +53,4 @@ imgUploadCloseButton.addEventListener('click', () => {
   document.removeEventListener('keydown', imgUploadFile);
 });
 
-export {openUserModal, closeBigPicture};
+export {openUserModal, closeBigPicture, imgUploadFile};
