@@ -37,9 +37,9 @@ pristine.addValidator(validComment, validateComment, 'Длина коммент�
 
 const pictureFormSubmit = (onSuccess) => {
   imgUploadForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
     const isValid = pristine.validate();
     if(isValid) {
-      evt.preventDefault();
       const formData = new FormData(evt.target);
       fetch(
         'https://28.javascript.pages.academy/kekstagram',

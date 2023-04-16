@@ -30,29 +30,6 @@ const pictureRemove = () => {
   });
 };
 
-const filterList = document.querySelector('.img-filters');
-const createFilter = () => {
-  filterList.addEventListener('click', (evt) => {
-    document.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
-    if(evt.target.classList.contains('img-filters__button')) {
-      evt.target.classList.add('img-filters__button--active');
-      pictureRemove();
-    }
-    if (evt.target.id === 'filter-default') {
-      createPicture(pictureAllPhotoInfo);
-    } else if (evt.target.id === 'filter-random') {
-      const sortedPictures = pictureAllPhotoInfo
-        .slice()
-        .sort(() => Math.random() - 0.5)
-        .slice(0, RANDOM_PICTURE_COAT);
-      createPicture(sortedPictures);
-    } else if (evt.target.id === 'filter-discussed') {
-      const sortedPictures = pictureAllPhotoInfo.slice().sort((pictureA, pictureB) => pictureB.comments.length - pictureA.comments.length);
-      createPicture(sortedPictures);
-    }
-  });
-};
-
 const debounce = (callback, timeoutDelay) => {
   let timeoutId;
   return (...rest) => {
@@ -61,10 +38,27 @@ const debounce = (callback, timeoutDelay) => {
   };
 };
 
-createFilter(debounce(
-  () => createPicture(pictureAllPhotoInfo),
-  TIME_DELAY,
-));
+const filterList = document.querySelector('.img-filters');
+
+filterList.addEventListener('click', debounce((evt) => {
+  document.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
+  if(evt.target.classList.contains('img-filters__button')) {
+    evt.target.classList.add('img-filters__button--active');
+    pictureRemove();
+  }
+  if (evt.target.id === 'filter-default') {
+    createPicture(pictureAllPhotoInfo);
+  } else if (evt.target.id === 'filter-random') {
+    const sortedPictures = pictureAllPhotoInfo
+      .slice()
+      .sort(() => Math.random() - 0.5)
+      .slice(0, RANDOM_PICTURE_COAT);
+    createPicture(sortedPictures);
+  } else if (evt.target.id === 'filter-discussed') {
+    const sortedPictures = pictureAllPhotoInfo.slice().sort((pictureA, pictureB) => pictureB.comments.length - pictureA.comments.length);
+    createPicture(sortedPictures);
+  }
+}), TIME_DELAY);
 
 createPicture(pictureAllPhotoInfo);
 
