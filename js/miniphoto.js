@@ -1,4 +1,5 @@
 const RANDOM_PICTURE_COAT = 10;
+const TIME_DELAY = 500;
 
 const pictures = document.querySelector('.pictures');
 const picture = document.querySelector('#picture').content.querySelector('.picture');
@@ -22,6 +23,14 @@ const createPicture = (currentPictures) => {
   pictures.appendChild(pictureFragment);
 };
 
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
 const pictureRemove = () => {
   const picArray = document.querySelectorAll('.picture');
   picArray.forEach((photo) => {
@@ -31,7 +40,7 @@ const pictureRemove = () => {
 
 const filterList = document.querySelector('.img-filters');
 
-filterList.addEventListener('click', (evt) => {
+const onFilterClick = debounce((evt) => {
   document.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
   if(evt.target.classList.contains('img-filters__button')) {
     evt.target.classList.add('img-filters__button--active');
@@ -49,7 +58,9 @@ filterList.addEventListener('click', (evt) => {
     const sortedPictures = pictureAllPhotoInfo.slice().sort((pictureA, pictureB) => pictureB.comments.length - pictureA.comments.length);
     createPicture(sortedPictures);
   }
-});
+}, TIME_DELAY);
+
+filterList.addEventListener('click', onFilterClick);
 
 createPicture(pictureAllPhotoInfo);
 
