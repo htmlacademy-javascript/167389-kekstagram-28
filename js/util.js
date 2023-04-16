@@ -21,7 +21,7 @@ const isEscapeKey = (evt) => evt.key === 'Escape';
 //   }, ALERT_SHOW_TIME);
 // };
 
-const successMessage = document.querySelector('#success').content.querySelector('.sucess');
+const successMessage = document.querySelector('#success').content.querySelector('.success');
 const errorMessage = document.querySelector('#error').content.querySelector('.error');
 
 const isSuccessMessage = () => {
