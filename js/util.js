@@ -1,3 +1,4 @@
+//import { imgUploadCloseButton } from "./form";
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 // const showAlert = (message) => {
@@ -39,6 +40,7 @@ const isSuccessMessage = () => {
   document.addEventListener('mousedown', () => {
     if (document.activeElement !== message) {
       message.remove();
+
     }
   });
 };
@@ -57,8 +59,8 @@ const isErrorMessage = () => {
       message.remove();
     }
   });
-  document.addEventListener('mousedown', () => {
-    if (document.activeElement !== message) {
+  document.addEventListener('click', (evt) => {
+    if (evt.target.closest('.error__inner')) {
       message.remove();
     }
   });
