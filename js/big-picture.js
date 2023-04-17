@@ -6,6 +6,7 @@ const NUMBER_COMMENT = 5;
 const bigPicture = document.querySelector('.big-picture');
 const body = document.querySelector('body');
 const bigPictureCloseButton = bigPicture.querySelector('#picture-cancel');
+let commentsOnPageNow = 0;
 
 
 const findBigPicture = () => {
@@ -28,6 +29,8 @@ const findBigPicture = () => {
     const socialComment = bigPicture.querySelector('.social__comment');
     const commentsCount = bigPicture.querySelector('.comments-count');
     const socialComments = bigPicture.querySelector('.social__comments');
+    socialComments.innerHTML = '';
+    
 
 
     //     const newComment = document.createElement('li');
@@ -48,11 +51,10 @@ const findBigPicture = () => {
     //   }
     // };
 
-    const createPictureComments = () => {
-      socialComments.innerHTML = '';
-      let commentsOnPageNow = 0;
+    const createPictureComment = () => {
+      //socialComments.innerHTML = '';
       const maxComments = commentsOnPageNow + NUMBER_COMMENT;
-      const currentComments = pictureId.comments.slice(commentsOnPageNow, maxComments);
+      const currentComments = pictureId.comments.slice(commentsOnPageNow, NUMBER_COMMENT);
 
       currentComments.forEach(({avatar, name, message}) => {
         const commentSample = socialComment.cloneNode(true);
@@ -61,20 +63,24 @@ const findBigPicture = () => {
         commentSample.querySelector('.social__text').textContent = message;
         socialComments.append(commentSample);
       });
+    };
 
-
+    const createPictureComments = () => {
+      //socialComments.innerHTML = '';
+      createPictureComment(commentsOnPageNow);
       //let commentsOnPageNow = 0;
       //const maxComments = commentsOnPageNow + NUMBER_COMMENT;
       //const currentComments = pictureId.comments.slice(0, 5);
       commentLoader.addEventListener('click', () => {
-        commentsOnPageNow += NUMBER_COMMENT;
-        createPictureComments();
+        commentsOnPageNow = (pictureId.comments.length - commentsOnPageNow);
+        console.log(commentsOnPageNow);
+        createPictureComment(commentsOnPageNow);
         if (commentsOnPageNow >= pictureId.comments.length) {
           commentLoader.classList.add('hidden');
-          commentsOnPageNow = pictureId.comments.length;
-        }
+        };
         return commentsOnPageNow;
       });
+      
       //createPictureComment(currentComments);
       // commentsCount.textContent = pictureId.comments.length;
       // socialCommentsCount.innerHTML = `${Math.min(pictureId.comments.length, maxComments)} из <span class="comments-count"> ${commentsCount.textContent}</span> комментариев`;
@@ -89,6 +95,7 @@ const findBigPicture = () => {
       // if (commentsOnPageNow >= pictureId.comments.length) {
       //   commentLoader.classList.add('hidden');
       // }
+
     };
 
     createPictureComments();
