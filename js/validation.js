@@ -42,7 +42,7 @@ const pictureFormSubmit = (onSuccess) => {
     if(isValid) {
       const formData = new FormData(evt.target);
       fetch(
-        'https://28.javascript.pages.academy/kekstagrm',
+        'https://28.javascript.pages.academy/kekstagram',
         {
           method: 'POST',
           body: formData,

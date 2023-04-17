@@ -37,8 +37,8 @@ const isSuccessMessage = () => {
       message.remove();
     }
   });
-  document.addEventListener('mousedown', () => {
-    if (document.activeElement !== message) {
+  document.addEventListener('click', (evt) => {
+    if (!evt.target.closest('.success__inner')) {
       message.remove();
 
     }
@@ -60,7 +60,7 @@ const isErrorMessage = () => {
     }
   });
   document.addEventListener('click', (evt) => {
-    if (evt.target.closest('.error__inner')) {
+    if (!evt.target.closest('.error__inner')) {
       message.remove();
     }
   });
