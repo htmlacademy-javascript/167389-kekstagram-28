@@ -10,9 +10,9 @@ const imgHashtagsInput = imgUploadForm.querySelector('.text__hashtags');
 const imgCommentInput = imgUploadForm.querySelector('.text__description');
 
 const onDocumentKeydown = (evt) => {
-  if (isEscapeKey(evt)) {
+  if (isEscapeKey(evt) && !document.querySelector('.error')) {
     evt.preventDefault();
-    closeBigPicture();
+    closeUserModal();
   }
 };
 
@@ -38,7 +38,7 @@ imgCommentInput.addEventListener('keydown', (evt) => {
   }
 });
 
-function closeBigPicture () {
+function closeUserModal () {
   imgUploadOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
@@ -49,8 +49,8 @@ function closeBigPicture () {
 
 
 imgUploadCloseButton.addEventListener('click', () => {
-  closeBigPicture();
+  closeUserModal();
   document.removeEventListener('keydown', imgUploadFile);
 });
 
-export {openUserModal, closeBigPicture, imgUploadFile};
+export {openUserModal, closeUserModal, imgUploadFile, imgUploadCloseButton};
